@@ -1,0 +1,125 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myOffreLabel" jhiTranslate="michelRecrutement2App.offre.home.createOrEditLabel">Create or edit a Offre</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!offre.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="offre.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="michelRecrutement2App.offre.nomOffre" for="field_nomOffre">Nom Offre</label>
+            <input type="text" class="form-control" name="nomOffre" id="field_nomOffre"
+                [(ngModel)]="offre.nomOffre" required/>
+            <div [hidden]="!(editForm.controls.nomOffre?.dirty && editForm.controls.nomOffre?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nomOffre?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="michelRecrutement2App.offre.descriptionOffre" for="field_descriptionOffre">Description Offre</label>
+            <input type="text" class="form-control" name="descriptionOffre" id="field_descriptionOffre"
+                [(ngModel)]="offre.descriptionOffre" required/>
+            <div [hidden]="!(editForm.controls.descriptionOffre?.dirty && editForm.controls.descriptionOffre?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.descriptionOffre?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="michelRecrutement2App.offre.salaireMin" for="field_salaireMin">Salaire Min</label>
+            <input type="number" class="form-control" name="salaireMin" id="field_salaireMin"
+                [(ngModel)]="offre.salaireMin" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="michelRecrutement2App.offre.salaireMax" for="field_salaireMax">Salaire Max</label>
+            <input type="number" class="form-control" name="salaireMax" id="field_salaireMax"
+                [(ngModel)]="offre.salaireMax" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="michelRecrutement2App.offre.typeOffre" for="field_typeOffre">Type Offre</label>
+            <select class="form-control" name="typeOffre" [(ngModel)]="offre.typeOffre" id="field_typeOffre"  required>
+                <option value="CDI">{{'michelRecrutement2App.TypeOffre.CDI' | translate}}</option>
+                <option value="CDD">{{'michelRecrutement2App.TypeOffre.CDD' | translate}}</option>
+                <option value="STAGE">{{'michelRecrutement2App.TypeOffre.STAGE' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.typeOffre?.dirty && editForm.controls.typeOffre?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.typeOffre?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="michelRecrutement2App.offre.dateOffres" for="field_dateOffres">Date Offres</label>
+            <div class="input-group">
+                <input id="field_dateOffres" type="text" class="form-control" name="dateOffres" ngbDatepicker  #dateOffresDp="ngbDatepicker" [(ngModel)]="offre.dateOffres"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateOffresDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateOffres?.dirty && editForm.controls.dateOffres?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateOffres?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="michelRecrutement2App.offre.entreprise" for="field_entreprise">Entreprise</label>
+            <select class="form-control" id="field_entreprise" name="entreprise" [(ngModel)]="offre.entrepriseId" required>
+                <option *ngIf="!editForm.value.entreprise" [ngValue]="null" selected></option>
+                <option [ngValue]="entrepriseOption.id" *ngFor="let entrepriseOption of entreprises; trackBy: trackEntrepriseById">{{entrepriseOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.entreprise?.dirty && editForm.controls.entreprise?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.entreprise?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="michelRecrutement2App.offre.categorieOffre" for="field_categorieOffre">Categorie Offre</label>
+            <select class="form-control" id="field_categorieOffre" name="categorieOffre" [(ngModel)]="offre.categorieOffreId" required>
+                <option *ngIf="!editForm.value.categorieOffre" [ngValue]="null" selected></option>
+                <option [ngValue]="categorieOffreOption.id" *ngFor="let categorieOffreOption of categorieoffres; trackBy: trackCategorieOffreById">{{categorieOffreOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.categorieOffre?.dirty && editForm.controls.categorieOffre?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.categorieOffre?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="michelRecrutement2App.offre.competence" for="field_competence">Competence</label>
+            <select class="form-control" id="field_competence" multiple name="competence" [(ngModel)]="offre.competences" required>
+                <option [ngValue]="getSelected(offre.competences, competenceOption)" *ngFor="let competenceOption of competences; trackBy: trackCompetenceById">{{competenceOption.competences}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.competence?.dirty && editForm.controls.competence?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.competence?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

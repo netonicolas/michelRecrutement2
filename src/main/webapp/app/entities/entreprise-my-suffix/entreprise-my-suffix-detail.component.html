@@ -1,0 +1,40 @@
+
+<div *ngIf="entreprise">
+    <h2><span jhiTranslate="michelRecrutement2App.entreprise.detail.title">Entreprise</span> {{entreprise.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="michelRecrutement2App.entreprise.entrepriseName">Entreprise Name</span></dt>
+        <dd>
+            <span>{{entreprise.entrepriseName}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.entreprise.telephoneEntreprise">Telephone Entreprise</span></dt>
+        <dd>
+            <span>{{entreprise.telephoneEntreprise}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.entreprise.siren">Siren</span></dt>
+        <dd>
+            <span>{{entreprise.siren}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.entreprise.lieuEntreprise">Lieu Entreprise</span></dt>
+        <dd>
+            <div *ngIf="entreprise.lieuEntrepriseId">
+                <a [routerLink]="['/lieu-my-suffix', entreprise.lieuEntrepriseId]">{{entreprise.lieuEntrepriseId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'entreprise-my-suffix/'+ entreprise.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

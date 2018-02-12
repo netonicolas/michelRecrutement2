@@ -1,0 +1,46 @@
+
+<div *ngIf="lieu">
+    <h2><span jhiTranslate="michelRecrutement2App.lieu.detail.title">Lieu</span> {{lieu.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="michelRecrutement2App.lieu.pays">Pays</span></dt>
+        <dd>
+            <span>{{lieu.pays}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.lieu.ville">Ville</span></dt>
+        <dd>
+            <span>{{lieu.ville}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.lieu.departement">Departement</span></dt>
+        <dd>
+            <span>{{lieu.departement}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.lieu.zipCode">Zip Code</span></dt>
+        <dd>
+            <span>{{lieu.zipCode}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.lieu.rue">Rue</span></dt>
+        <dd>
+            <span>{{lieu.rue}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.lieu.numero">Numero</span></dt>
+        <dd>
+            <span>{{lieu.numero}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'lieu-my-suffix/'+ lieu.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,22 @@
+{
+    "michelRecrutement2App": {
+        "categorieOffre" : {
+            "home": {
+                "title": "Categorie Offres",
+                "createLabel": "Create a new Categorie Offre",
+                "createOrEditLabel": "Create or edit a Categorie Offre",
+                "search": "Search for Categorie Offre"
+            },
+            "created": "A new Categorie Offre is created with identifier {{ param }}",
+            "updated": "A Categorie Offre is updated with identifier {{ param }}",
+            "deleted": "A Categorie Offre is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Categorie Offre {{ id }}?"
+            },
+            "detail": {
+                "title": "Categorie Offre"
+            },
+            "nomCategorie": "Nom Categorie"
+        }
+    }
+}

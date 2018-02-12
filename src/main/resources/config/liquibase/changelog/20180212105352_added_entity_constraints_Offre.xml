@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Offre.
+    -->
+    <changeSet id="20180212105352-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="entreprise_id"
+                                 baseTableName="offre"
+                                 constraintName="fk_offre_entreprise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="entreprise"/>
+
+        <addForeignKeyConstraint baseColumnNames="categorie_offre_id"
+                                 baseTableName="offre"
+                                 constraintName="fk_offre_categorie_offre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categorie_offre"/>
+
+        <addForeignKeyConstraint baseColumnNames="offres_id"
+                                 baseTableName="offre_competence"
+                                 constraintName="fk_offre_competence_offres_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="offre"/>
+        <addForeignKeyConstraint baseColumnNames="competences_id"
+                                 baseTableName="offre_competence"
+                                 constraintName="fk_offre_competence_competences_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="competence"/>
+        
+    </changeSet>
+</databaseChangeLog>

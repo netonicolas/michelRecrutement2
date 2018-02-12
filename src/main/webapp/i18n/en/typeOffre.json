@@ -1,0 +1,10 @@
+{
+    "michelRecrutement2App": {
+        "TypeOffre" : {
+            "null": "",
+            "CDI": "CDI",
+            "CDD": "CDD",
+            "STAGE": "STAGE"
+        }
+    }
+}

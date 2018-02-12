@@ -1,0 +1,30 @@
+{
+    "michelRecrutement2App": {
+        "offre" : {
+            "home": {
+                "title": "Offres",
+                "createLabel": "Créer un nouveau Offre",
+                "createOrEditLabel": "Créer ou éditer un Offre",
+                "search": "Recherche pour Offre"
+            },
+            "created": "Un nouveau Offre a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Offre avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Offre avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Offre {{ id }} ?"
+            },
+            "detail": {
+                "title": "Offre"
+            },
+            "nomOffre": "Nom Offre",
+            "descriptionOffre": "Description Offre",
+            "salaireMin": "Salaire Min",
+            "salaireMax": "Salaire Max",
+            "typeOffre": "Type Offre",
+            "dateOffres": "Date Offres",
+            "entreprise": "Entreprise",
+            "categorieOffre": "Categorie Offre",
+            "competence": "Competence"
+        }
+    }
+}

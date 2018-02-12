@@ -1,0 +1,23 @@
+{
+    "michelRecrutement2App": {
+        "competence" : {
+            "home": {
+                "title": "Competences",
+                "createLabel": "Create a new Competence",
+                "createOrEditLabel": "Create or edit a Competence",
+                "search": "Search for Competence"
+            },
+            "created": "A new Competence is created with identifier {{ param }}",
+            "updated": "A Competence is updated with identifier {{ param }}",
+            "deleted": "A Competence is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Competence {{ id }}?"
+            },
+            "detail": {
+                "title": "Competence"
+            },
+            "nomCompetence": "Nom Competence",
+            "competences": "Competences"
+        }
+    }
+}

@@ -1,0 +1,64 @@
+
+<div *ngIf="offre">
+    <h2><span jhiTranslate="michelRecrutement2App.offre.detail.title">Offre</span> {{offre.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="michelRecrutement2App.offre.nomOffre">Nom Offre</span></dt>
+        <dd>
+            <span>{{offre.nomOffre}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.offre.descriptionOffre">Description Offre</span></dt>
+        <dd>
+            <span>{{offre.descriptionOffre}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.offre.salaireMin">Salaire Min</span></dt>
+        <dd>
+            <span>{{offre.salaireMin}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.offre.salaireMax">Salaire Max</span></dt>
+        <dd>
+            <span>{{offre.salaireMax}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.offre.typeOffre">Type Offre</span></dt>
+        <dd>
+            <span jhiTranslate="{{'michelRecrutement2App.TypeOffre.' + offre.typeOffre}}">{{offre.typeOffre}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.offre.dateOffres">Date Offres</span></dt>
+        <dd>
+            <span>{{offre.dateOffres | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.offre.entreprise">Entreprise</span></dt>
+        <dd>
+            <div *ngIf="offre.entrepriseId">
+                <a [routerLink]="['/entreprise-my-suffix', offre.entrepriseId]">{{offre.entrepriseId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.offre.categorieOffre">Categorie Offre</span></dt>
+        <dd>
+            <div *ngIf="offre.categorieOffreId">
+                <a [routerLink]="['/categorie-offre-my-suffix', offre.categorieOffreId]">{{offre.categorieOffreId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="michelRecrutement2App.offre.competence">Competence</span></dt>
+        <dd>
+            <span *ngFor="let competence of offre.competences; let last = last">
+                <a [routerLink]="['/competence-my-suffix', competence?.id ]">{{competence.nomCompetence}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'offre-my-suffix/'+ offre.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

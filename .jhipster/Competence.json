@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "competences",
+            "otherEntityName": "offre",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "competence"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nomCompetence",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180212105356",
+    "entityTableName": "competence",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

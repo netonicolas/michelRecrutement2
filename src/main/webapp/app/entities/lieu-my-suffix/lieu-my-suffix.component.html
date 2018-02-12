@@ -1,0 +1,81 @@
+<div>
+    <h2>
+        <span jhiTranslate="michelRecrutement2App.lieu.home.title">Lieus</span>
+        <button class="btn btn-primary float-right jh-create-entity create-lieu-my-suffix" [routerLink]="['/', { outlets: { popup: ['lieu-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="michelRecrutement2App.lieu.home.createLabel">
+            Create new Lieu
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'michelRecrutement2App.lieu.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="lieus">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="michelRecrutement2App.lieu.pays">Pays</span></th>
+            <th><span jhiTranslate="michelRecrutement2App.lieu.ville">Ville</span></th>
+            <th><span jhiTranslate="michelRecrutement2App.lieu.departement">Departement</span></th>
+            <th><span jhiTranslate="michelRecrutement2App.lieu.zipCode">Zip Code</span></th>
+            <th><span jhiTranslate="michelRecrutement2App.lieu.rue">Rue</span></th>
+            <th><span jhiTranslate="michelRecrutement2App.lieu.numero">Numero</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let lieu of lieus ;trackBy: trackId">
+                <td><a [routerLink]="['../lieu-my-suffix', lieu.id ]">{{lieu.id}}</a></td>
+                <td>{{lieu.pays}}</td>
+                <td>{{lieu.ville}}</td>
+                <td>{{lieu.departement}}</td>
+                <td>{{lieu.zipCode}}</td>
+                <td>{{lieu.rue}}</td>
+                <td>{{lieu.numero}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../lieu-my-suffix', lieu.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'lieu-my-suffix/'+ lieu.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'lieu-my-suffix/'+ lieu.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
