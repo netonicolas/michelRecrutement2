@@ -1,0 +1,11 @@
+version: '2'
+services:
+    michelrecrutement2-postgresql:
+        image: postgres:9.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/michelRecrutement2/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=michelRecrutement2
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
